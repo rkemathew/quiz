@@ -1,16 +1,24 @@
-var Nerd = require('./models/nerd');
+var express = require('express');
+var api = express.Router();
 
-module.exports = function(app) {
-   app.get('/api/nerds', function(req, res) {
-       Nerd.find(function(err, nerds) {
-         if (err)
-             res.send(err);
+module.exports = function(wagner) {
+   api.get('/question', wagner.invoke(function(Question) {
+      return function(req, res) {
+        Question.find(function(err, questions) {
+          if (err) {
+            res.send(err);
+          }
 
-         res.json(nerds);
-       });
-   });
+          res.json(questions);
+        });
+      };
+   }));
 
-   app.get('*', function(req, res) {
+/*
+   api.get('*', function(req, res) {
        res.sendfile('./public/views/index.html');
    });
+*/
+
+  return api;
 };
