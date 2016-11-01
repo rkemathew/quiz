@@ -13,6 +13,9 @@ app.use(express.static(__dirname + '/public'));
 var models = require('./app/models')(wagner);
 app.use('/quiz/v1/', require('./app/routes.js')(wagner));
 
-app.listen(3000);
+var server = app.listen(3000, function() {
+  var port = server.address().port;
+  console.log('Example app listening at port %s', port);
+});
 
-module.exports = app;
+module.exports = server;
