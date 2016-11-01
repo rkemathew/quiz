@@ -1,2 +1,2 @@
-# meanstack_simple
-A Simple Meanstack barebones app that can be used as a template to create other such apps
+# quiz
+The Quiz Mean Stack Learning App that was cloned from the meanstack_simple app
