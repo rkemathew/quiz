@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var questionSchema = {
-  question : {type : String, required: true},
+  question : {type : String, required: true, default: ''},
   options: [{
       option: { type: String, required: true },
       isCorrect: { type: Boolean, required: true }

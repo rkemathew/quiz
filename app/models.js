@@ -1,9 +1,18 @@
 var mongoose = require('mongoose');
-var config = require('./config/db.js');
 
 module.exports = function(wagner) {
-  var Question = require('./models/question');
+  var config = require('./config/db.js');
+  var db = mongoose.connect(config.url);
+
+  var Question = db.model('Question', require('./schema/question'), 'questions');
+
   wagner.factory('Question', function() {
     return Question;
   });
+
+  var models = {
+    Question: Question
+  };
+
+  return models;
 };
